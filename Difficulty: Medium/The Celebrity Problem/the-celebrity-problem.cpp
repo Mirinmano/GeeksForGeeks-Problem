@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int celebrity(vector<vector<int>>& mat) {
+        int n = mat.size();
+        int i = 0, j = n - 1;
+
+        while (i < j) {
+            if (mat[i][j] == 1) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+
+        int candidate = i;
+
+        for (int a = 0; a < n; a++) {
+            if (a == candidate) continue;
+            if (mat[candidate][a] == 1 || mat[a][candidate] == 0) {
+                return -1;
+            }
+        }
+
+        return candidate;
+    }
+};
